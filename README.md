@@ -16,3 +16,7 @@ Este projeto é uma aplicação de Previsão de Elasticidade de Preço para e-co
 A elasticidade de preço é um conceito econômico que mede a sensibilidade da demanda de um produto em relação às mudanças de preço. Com base nisso, a aplicação utiliza algoritmos de aprendizado de máquina para prever a elasticidade de preço dos produtos do seu e-commerce.
 
 Você pode carregar os dados dos produtos, treinar o modelo e realizar simulações de preços para entender como o faturamento será afetado. A análise do impacto financeiro ajuda na tomada de decisões estratégicas relacionadas aos preços dos produtos.
+
+## Link Para o Dashboard
+
+![https://master-em83egzpops.streamlit.app/]
