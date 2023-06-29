@@ -10,8 +10,9 @@ st.title("Bem-vindo(a) à Aplicação de Previsão de Elasticidade de Preço! �
 st.markdown(
     """
     Esta aplicação foi desenvolvida para um e-commerce de produtos eletrônicos que solicitou um modelo de Inteligência Artificial capaz de prever a elasticidade de preço. 
-    A elasticidade de preço é um conceito econômico que mede a sensibilidade da demanda de um produto às mudanças de preço. 
-    Com base nessa previsão, você pode tomar decisões estratégicas e maximizar o faturamento do seu negócio.
+    
+    - A elasticidade de preço é um conceito econômico que mede a sensibilidade da demanda de um produto às mudanças de preço. 
+    - Com base nessa previsão, você pode tomar decisões estratégicas e maximizar o faturamento do seu negócio.
 
     ##### Com esse modelo, você pode simular cenários de aumento de preço e descontos e receber feedbacks em tempo real sobre os impactos financeiros no faturamento.
 
