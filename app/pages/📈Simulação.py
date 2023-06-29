@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
-
-from matplotlib import pyplot as plt
 import streamlit as st
 
 st.set_page_config(layout='wide')
