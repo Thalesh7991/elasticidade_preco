@@ -100,8 +100,8 @@ def simulation_elasticity(percentual, x_price, y_demand, df_elastity, op):
         result_faturamento = {
         'name': [],
         'faturamento_atual': [],
-        'faturamento_alteracao': [],
-        'alteracao_faturamento': [],
+        #'faturamento_alteracao': [],
+        #'alteracao_faturamento': [],
         'faturamento_novo': [],
         'variacao_faturamento': [],
         'variacao_percentual': []
@@ -145,8 +145,8 @@ def simulation_elasticity(percentual, x_price, y_demand, df_elastity, op):
 
             result_faturamento['name'].append(df_elastity['name'][i])
             result_faturamento['faturamento_atual'].append(faturamento_atual)
-            result_faturamento['faturamento_alteracao'].append(faturamento_alteracao)
-            result_faturamento['alteracao_faturamento'].append(alteracao_faturamento)
+            #result_faturamento['faturamento_alteracao'].append(faturamento_alteracao)
+            #result_faturamento['alteracao_faturamento'].append(alteracao_faturamento)
             result_faturamento['faturamento_novo'].append(faturamento_novo)
             result_faturamento['variacao_faturamento'].append(variacao_faturamento)
             result_faturamento['variacao_percentual'].append(variacao_percentual)
@@ -155,6 +155,65 @@ def simulation_elasticity(percentual, x_price, y_demand, df_elastity, op):
         return resultado
     else:
         return None
+
+
+def gerar_relatorio_simulacao(final, op):
+    relatorio = "### **Nosso modelo de Inteligência Artificial gerou um relatório personalizado simulando os efeitos que essa alteração de preço pode causar na Demanda e Faturamento:**\n\n"
+    produtos = []
+
+    for i in range(len(final)):
+        produto = final['name'][i]
+        faturamento_atual = final['faturamento_atual'][i]
+        faturamento_novo = final['faturamento_novo'][i]
+
+        if op == 'Aumento de Preço':
+            acao = "Aumento"
+            if faturamento_novo > faturamento_atual:
+                acao2 = "Aumento"
+            else:
+                acao2 = "Diminuição"
+        else:  # Desconto de Preço
+            acao = "Diminuição"
+            if faturamento_novo < faturamento_atual:
+                acao2 = "Diminuição"
+            else:
+                acao2 = "Aumento"
+
+        # Limitar o tamanho do nome do produto a 50 caracteres
+        produto_limitado = produto[:30] + "" if len(produto) > 50 else produto
+
+        relatorio += f"- {acao} {number}% no produto {produto_limitado}: {acao2} do faturamento em R${abs(faturamento_novo)}\n"
+        produtos.append(produto_limitado)
+
+    total_produtos_analisados = len(produtos)
+    soma_faturamento_novo = final['faturamento_novo'].sum()
+    soma_faturamento_atual = final['faturamento_atual'].sum()
+
+    relatorio += "\n## **Impacto no faturamento e na demanda no negócio como um todo:**\n"
+    relatorio += f"- Total de produtos analisados: {total_produtos_analisados}\n"
+
+    if soma_faturamento_novo > soma_faturamento_atual:
+        diferenca_faturamento = soma_faturamento_novo - soma_faturamento_atual
+        texto_personalizado = f"Com um desconto de {number}% o faturamento do seu negócio AUMENTA, podendo fazer com que o faturamento potencial do seu negócio possa atingir {round(soma_faturamento_novo,2)}. Isso representa um valor de {round(diferenca_faturamento,2)} a mais do que você fatura atualmente."
+    else:
+        diferenca_faturamento = soma_faturamento_atual - soma_faturamento_novo
+        texto_personalizado = f"Com um desconto de {number}% o faturamento do seu negócio DIMINUI, podendo fazer com que o faturamento potencial do seu negócio possa atingir {round(soma_faturamento_novo,2)}. Isso representa um valor de {round(diferenca_faturamento,2)} a menos do que você fatura atualmente."
+
+    relatorio += f"- {texto_personalizado}\n"
+    relatorio += f"- Variação percentual no faturamento: {final['variacao_percentual'].sum()}%\n"
+
+    return relatorio
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -196,4 +255,9 @@ if __name__ == '__main__':
         if number != 0:
 
             final = simulation_elasticity(number, x_price, y_demand, df_elasticity, op)
-            st.dataframe(final)
+            final2 = final.copy()
+            final2.columns = ['Produto', 'Faturamento Atual', 'Faturamento Previsto IA', 'Variação de Faturamento', 'Percentual de Variação']
+            st.dataframe(final2)
+        
+            relatorio = gerar_relatorio_simulacao(final,op)
+            st.markdown(relatorio)
