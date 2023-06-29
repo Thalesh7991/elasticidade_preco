@@ -1,10 +1,9 @@
 import streamlit as st
 
-st.set_page_config(layout='wide')
-
 st.set_page_config(
     page_title="Previsão de Elasticidade de Preço",
     page_icon="💰",
+    layout='wide'
 )
 
 st.title("Bem-vindo(a) à Aplicação de Previsão de Elasticidade de Preço! 💰")
