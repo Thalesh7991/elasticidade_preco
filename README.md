@@ -19,4 +19,4 @@ Você pode carregar os dados dos produtos, treinar o modelo e realizar simulaç�
 
 ## Link Para o Dashboard
 
-![https://master-em83egzpops.streamlit.app/]
+https://master-em83egzpops.streamlit.app/
