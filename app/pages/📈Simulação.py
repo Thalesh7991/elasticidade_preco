@@ -224,12 +224,9 @@ if __name__ == '__main__':
 
     df_elasticity = ml_elasticity(x_price, y_demand)
 
-    tab1, tab2 = st.tabs(['Elasticidade de Preço', 'Simule Cenários'])
+    tab2 = st.tabs(['Simule Cenários'])
 
 
-    with tab1:
-        st.header('Elasticidade de Preço dos Produtos')
-        st.dataframe(df_elasticity)
     with tab2:
 
         col1, col2 = st.columns((1,1))
