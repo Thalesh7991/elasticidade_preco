@@ -230,7 +230,7 @@ if __name__ == '__main__':
     with tab1:
         st.header('Elasticidade de Preço dos Produtos')
         df_copy = df_elasticity.copy()
-        df_copy.columns = ['Produto', 'Elasticidade de Preço', 'Preço Médio', 'Quantidade média', 'Intercept', 'Slope', 'Rsquared']
+        #df_copy.columns = ['Produto', 'Elasticidade de Preço', 'Preço Médio', 'Quantidade média', 'Intercept', 'Slope', 'Rsquared']
         st.dataframe(df_copy)
     with tab2:
 
