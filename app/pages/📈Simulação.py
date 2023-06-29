@@ -7,7 +7,7 @@ st.set_page_config(layout='wide')
 
 
 def load_data():
-    df_raw = pd.read_csv('data/df_ready.csv')
+    df_raw = pd.read_csv('df_ready.csv')
     return df_raw
 
 def drop_columns(df_raw):
