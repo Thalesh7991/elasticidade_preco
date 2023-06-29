@@ -4,6 +4,17 @@ st.set_page_config(
     page_title="Previsão de Elasticidade de Preço",
     page_icon="💰",
 )
+st.markdown(
+    """
+    <style>
+    body {
+        color: white;
+        background-color: #222222;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.title("Bem-vindo(a) à Aplicação de Previsão de Elasticidade de Preço! 💰")
 
