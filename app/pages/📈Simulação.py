@@ -4,6 +4,7 @@ import statsmodels.api as sm
 import streamlit as st
 
 st.set_page_config(layout='wide')
+st.set_theme('dark')
 
 def load_data():
     df_raw = pd.read_csv('data/df_ready.csv')
