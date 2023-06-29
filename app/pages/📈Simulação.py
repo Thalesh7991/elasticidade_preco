@@ -4,17 +4,7 @@ import statsmodels.api as sm
 import streamlit as st
 
 st.set_page_config(layout='wide')
-st.markdown(
-    """
-    <style>
-    body {
-        color: white;
-        background-color: #222222;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 def load_data():
     df_raw = pd.read_csv('data/df_ready.csv')
